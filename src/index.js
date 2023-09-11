@@ -7,7 +7,7 @@ import BarsPositioning from "./dbTable"
 
 function App() {
   return (
-      <BarsPositioning/>
+    <BarsPositioning />
   );
 }
 
