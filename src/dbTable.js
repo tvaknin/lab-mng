@@ -22,6 +22,7 @@ const DatatablePage = () => {
 
 function getDb() {
 
+
   const bla = [
     {
       "DeviceID": 1,
@@ -43,5 +44,34 @@ function getDb() {
 
   return bla
 }
+
+const fetchData = async () => {
+  try {
+    // Define the data to be sent in the POST request
+    const postData = {
+      // Your data here...
+    };
+
+    // Make a POST request to your API
+    const response = await fetch('http://10.43.3.33:8080/restsql/res/Devices', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+
+    // Save the received data into the deviceData state variable
+    setDeviceData(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
 export default DatatablePage;
