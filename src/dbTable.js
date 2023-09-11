@@ -1,6 +1,5 @@
 import React from 'react';
 import { MDBDataTable } from 'mdbreact';
-import { woInfo } from "./woInfo.js";
 import { woHeader } from "./woHeader";
 
 

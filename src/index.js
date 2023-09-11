@@ -4,10 +4,12 @@ import "./styles.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import BarsPositioning from "./dbTable"
+import BarsPositioning2 from "./utilities"
 
 function App() {
   return (
-    <BarsPositioning />
+      <div><BarsPositioning />
+      <BarsPositioning2 /></div>
   );
 }
 
