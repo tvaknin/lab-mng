@@ -1,9 +1,14 @@
 const express = require('express');
 const path = require('path');
-const { createSession  } = require('net-ping');
+const cors = require('cors'); // Import the cors package
+const ping = require('ping');
+// const { createSession } = require('net-ping');
 
 const app = express();
 const port = process.env.PORT || 1990;
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Serve static assets from the "public" directory
 app.use(express.static(path.join(__dirname, 'build')));
@@ -13,23 +18,17 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const session = createSession();
-
 // Define a route for the ping endpoint
 app.get('/ping', (req, res) => {
-  // Get the IP address from the "ip" query parameter, if provided
-  const ipToPing = req.query.ip || '8.8.8.8'; // Default to Google's DNS server if no IP provided
-
-  // Perform the ping
-  session.pingHost(ipToPing, (error, target) => {
-    if (!error) {
-      // If the IP is pingable, return true
-      res.json({ pingable: true });
-    } else {
-      // If the IP is not pingable, return false
-      res.json({ pingable: false });
-    }
-  });
+    console.log('Received a ping request'); // Log the request
+    // Get the IP address from the "ip" query parameter, if provided
+    const ipToPing = req.query.ip || '8.8.8.8'; // Default to Google's DNS server if no IP provided
+    // Perform the ping
+    ping.sys.probe(ipToPing, (isAlive) => {
+        const pingable = isAlive ? true : false;
+        console.log(`${ipToPing} is ${pingable}`);
+        res.json({ pingable });
+    });
 });
 
 // Start the server

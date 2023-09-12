@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import "./styles.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import BarsPositioning from "./dbTable"
+import DatatablePage from "./dbTable"
 import BarsPositioning2 from "./utilities"
 
 function App() {
   return (
-      <div><BarsPositioning />
+    <div><DatatablePage />
       <BarsPositioning2 /></div>
   );
 }

@@ -5,36 +5,43 @@ import { woHeader } from "./woHeader";
 
 const DatatablePage = () => {
 
-  const eee = [
-    {
-      "DeviceID": 1,
-      "IP_Address": "ERROR",
-      "Platform": "ERROR",
-      "CAS IP": "ERROR",
-      "Switch IP": "ERROR",
-      "DeviceType": "ERROR",
-      "Hardware (other name)": "ERROR",
-      "ASI Cards": 4,
-      "Rack": 36,
-      "Location": "ERROR",
-      "Description": "ERROR",
-      "Owner": "ERROR",
-      "UsedBy": "ERROR",
-      "LastUsed": "2023-09-04",
-      "Loanable": "No"
-    }]
+  const [users, setUsers] = useState([])
+  var dataj
 
-  const data = {
-    columns: woHeader,
-    rows: eee
-  };
+  const fetchDevs = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/restsql/res/devices?_output=json', {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        throw new Error('EROL  Network response was not ok UPDATED ONE' + response.status);
+      }
+      dataj = await response.json();
+      const userDatae = {
+        columns: woHeader,
+        rows: dataj['devicess'],
+      };
+
+      // Convert boolean values to text
+      userDatae.rows.forEach((row) => {
+        row.loanable = row.loanable ? 'Yes' : 'No';
+      });
+
+      setUsers(userDatae);
+    } catch (error) {
+      console.error('EROL Error got!!!', dataj);
+    }
+  }
+  useEffect(() => {
+    fetchDevs();
+  }, []);
 
   return (
     <MDBDataTable
       striped
       bordered
       small
-      data={data}
+      data={users}
     />
   );
 }

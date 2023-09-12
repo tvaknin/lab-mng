@@ -1,92 +1,98 @@
 export const woHeader = [
   {
     label: 'DeviceID',
-    field: 'DeviceID',
+    field: 'id',
     sort: 'asc',
     width: 150
   },
   {
     label: 'IP_Address',
-    field: 'IP_Address',
+    field: 'ip',
     sort: 'asc',
     width: 270
   },
   {
     label: 'Platform',
-    field: 'Platform',
+    field: 'platform',
     sort: 'asc',
     width: 150
   },
   {
     label: 'CAS IP',
-    field: 'CAS IP',
+    field: 'cas_ip',
     sort: 'asc',
     width: 270
   },
   {
     label: 'Switch IP',
-    field: 'Switch IP',
+    field: 'switch_ip1',
     sort: 'asc',
     width: 150
   },
   {
     label: 'DeviceType',
-    field: 'DeviceType',
+    field: 'device_type',
     sort: 'asc',
     width: 270
   },
   {
-    label: 'Hardware (other name)',
-    field: 'Hardware (other name)',
+    label: 'Hardware',
+    field: 'hardware',
     sort: 'asc',
     width: 150
   },
   {
     label: 'ASI Cards',
-    field: 'ASI Cards',
+    field: 'asi_cards',
     sort: 'asc',
     width: 270
   },
   {
     label: 'Rack',
-    field: 'Rack',
+    field: 'rack',
     sort: 'asc',
     width: 150
   },
   {
     label: 'Location',
-    field: 'Location',
+    field: 'location',
     sort: 'asc',
     width: 270
   },
   {
     label: 'Description',
-    field: 'Description',
+    field: 'description',
     sort: 'asc',
     width: 150
   },
   {
     label: 'Owner',
-    field: 'Owner',
+    field: 'owner',
     sort: 'asc',
     width: 270
   },
   {
     label: 'UsedBy',
-    field: 'UsedBy',
+    field: 'used_by',
     sort: 'asc',
     width: 150
   },
   {
     label: 'LastUsed',
-    field: 'LastUsed',
+    field: 'last_used',
     sort: 'asc',
     width: 270
   },
   {
     label: 'Loanable',
-    field: 'Loanable',
+    field: 'loanable',
     sort: 'asc',
-    width: 270
+    width: 270,
+  },
+  {
+    label: 'Check Box',
+    field: 'checkbox',
+    sort: 'disabled', // Disable sorting for the checkbox column
+    width: 50,
   },
 ];
