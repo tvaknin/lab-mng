@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import "./styles.css";
 import { MDBDataTable } from 'mdbreact';
 import { woHeader } from "./woHeader";
 
-
 const DatatablePage = () => {
+
+  const eee = [
+    {
+      "DeviceID": 1,
+      "IP_Address": "ERROR",
+      "Platform": "ERROR",
+      "CAS IP": "ERROR",
+      "Switch IP": "ERROR",
+      "DeviceType": "ERROR",
+      "Hardware (other name)": "ERROR",
+      "ASI Cards": 4,
+      "Rack": 36,
+      "Location": "ERROR",
+      "Description": "ERROR",
+      "Owner": "ERROR",
+      "UsedBy": "ERROR",
+      "LastUsed": "2023-09-04",
+      "Loanable": "No"
+    }]
+
   const data = {
     columns: woHeader,
-    rows: fetchData()
+    rows: eee
   };
 
   return (
@@ -18,32 +38,5 @@ const DatatablePage = () => {
     />
   );
 }
-
-const fetchData = async () => {
-  try {
-    // Define the data to be sent in the POST request
-    const postData = {
-      // Your data here...
-    };
-
-    // Make a POST request to your API
-    const response = await fetch('http://10.43.3.33:8080/restsql/res/devices?_output=json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(postData),
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
 
 export default DatatablePage;
